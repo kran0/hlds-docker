@@ -1,0 +1,22 @@
+version: "2"
+
+services:
+  hlds:
+    build: .
+    image: kran0/hlds:latest
+    environment:
+      GAME:        "cstrike"
+      MAXPLAYERS:  "8"
+      START_MAP:   "de_dust2"
+      SERVER_NAME: "Counter-Strike 1.6 Server"
+      START_MONEY: "800"
+      BUY_TIME:    "0.25"
+      FRIENDLY_FIRE:   "1"
+      RESTART_ON_FAIL: "1"
+      SERVER_PASSWORD: "secret"
+      RCON_PASSWORD:   "supersecret"
+    ports:
+      - 26900:26900/udp
+      - 27020:27020/udp
+      - 27015:27015/udp
+      - 27015:27015/tcp
