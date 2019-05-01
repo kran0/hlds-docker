@@ -1,4 +1,4 @@
-# CS 1.6 in Docker !
+# CS 1.6 didicated server in Docker !
 
 Docker container for CS 1.6 LAN server. 
 Makes running CS 1.6 lan server extremely easy with just a few commands on any linux box.
