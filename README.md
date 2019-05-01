@@ -15,8 +15,6 @@ Plus: Metamod, AMXmod and Dproto
 ```bash
 cd /opt/my/server/dir/
 curl -o ./docker-compose.yaml https://github.com/kran0/hlds-docker/raw/master/docker-compose.yaml
-docker-compose pull
-
 docker-compose up -d
 
 # stop with:
@@ -53,5 +51,5 @@ Please watch my [Automated builds](https://hub.docker.com/r/kran0/hlds/tags/).
 | kran0/hlds:latest | latest stable |
 | kran0/hlds:tag    | [Tag](https://github.com/kran0/hlds/releases) releases |
 
-Build with command: "`docker-compose build`".
+Build with command: "`docker build -t kran0/hlds:latest .`".
 You need Docker 17.05 or higher on the daemon and client to use multistage builds.
