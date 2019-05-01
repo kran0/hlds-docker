@@ -15,6 +15,8 @@ Plus: Metamod, AMXmod and Dproto
 ```bash
 cd /opt/my/server/dir/
 curl -o ./docker-compose.yaml https://github.com/kran0/hlds-docker/raw/master/docker-compose.yaml
+docker-compose pull
+
 docker-compose up -d
 
 # stop with:
