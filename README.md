@@ -12,7 +12,7 @@ Plus: Metamod, AMXmod and Dproto
 
 Connect to the server in CS client terminal:
 ```
-connect 172.16.1.121; password secret
+connect $server_ip; password secret
 ```
 
 1) Run with docker-compose (simplest):
