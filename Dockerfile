@@ -1,7 +1,8 @@
 FROM ubuntu:19.04 AS base
 
 RUN apt update\
- && apt install -y lib32gcc1 libstdc++6
+# && apt install -y lib32gcc1 libstdc++6 ca-certificates
+ && apt install -y lib32gcc1 ca-certificates
 
 FROM base AS builder
 
