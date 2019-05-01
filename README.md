@@ -1,12 +1,11 @@
 # CS 1.6 in Docker !
 
 Docker container for CS 1.6 LAN server. 
-Makes running CS 1.6 lan server extremely easy. 
-With yuse few commands on any linux box.
+Makes running CS 1.6 lan server extremely easy with just a few commands on any linux box.
 
 ## What is inside?
 
-Official HLDS with cstrike (installed with steamcmd).
+HLDS with cstrike (installed using official steamcmd).
 Plus: Metamod, AMXmod and Dproto
 
 ## How to use?
@@ -14,8 +13,12 @@ Plus: Metamod, AMXmod and Dproto
 1) Run with docker-compose (simplest):
 
 ```bash
-cd /to/dir/with/docker-compose.yaml/
-docker-compos up -d
+cd /opt/my/server/dir/
+curl -o ./docker-compose.yaml https://github.com/kran0/hlds-docker/raw/master/docker-compose.yaml
+docker-compose up -d
+
+# stop with:
+# docker-compose down
 ```
 
 2) Run without docker-compose:
