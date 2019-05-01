@@ -49,7 +49,7 @@ Please watch my [Automated builds](https://hub.docker.com/r/kran0/hlds/tags/).
 | Repository:Tag | Build description  |
 |---|---|
 | kran0/hlds:latest | latest stable |
-| kran0/hlds:tag    | [Tag](https://github.com/kran0/hlds/releases) releases |
+| kran0/hlds:tag    | [Tag](https://github.com/kran0/hlds-docker/releases) releases |
 
 Build with command: "`docker build -t kran0/hlds:latest .`".
 You need Docker 17.05 or higher on the daemon and client to use multistage builds.
