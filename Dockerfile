@@ -27,6 +27,9 @@ RUN UPDATE_CMD="./steamcmd/steamcmd_auto.sh +login ${STEAM_USER} ${STEAM_PASS} +
  && ${UPDATE_CMD} +app_update 10 validate\
  && ${UPDATE_CMD} +app_update 90 validate
 
+# remove steamcmd
+RUN rm -rvf ./steamcmd
+
 RUN mkdir -vp ./cstrike/addons/metamod/dlls ./cstrike/addons/dproto/dlls
 
 RUN curl -L "http://prdownloads.sourceforge.net/metamod/metamod-${METAMOD_VER}-linux.tar.gz?download" | tar zxC ./cstrike/addons/metamod/dlls\
