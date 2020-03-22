@@ -2,7 +2,7 @@ version: "2"
 
 services:
   hlds:
-    image: kran0/hlds:latest
+    build: .
     environment:
       GAME:        "cstrike"
       MAXPLAYERS:  "8"
@@ -12,7 +12,7 @@ services:
       BUY_TIME:    "0.25"
       FRIENDLY_FIRE:   "1"
       RESTART_ON_FAIL: "1"
-      SERVER_PASSWORD: "secret"
+      #SERVER_PASSWORD: "secret"
       RCON_PASSWORD:   "supersecret"
     ports:
       - 26900:26900/udp
