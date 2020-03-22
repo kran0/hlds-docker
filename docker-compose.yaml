@@ -5,7 +5,7 @@ services:
     build: .
     environment:
       GAME:        "cstrike"
-      MAXPLAYERS:  "8"
+      MAXPLAYERS:  "32"
       START_MAP:   "de_dust2"
       SERVER_NAME: "Counter-Strike 1.6 Server"
       START_MONEY: "800"
