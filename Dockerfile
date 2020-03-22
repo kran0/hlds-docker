@@ -30,18 +30,6 @@ RUN UPDATE_CMD="./steamcmd/steamcmd_auto.sh +login ${STEAM_USER} ${STEAM_PASS} +
 
 # remove steamcmd
 RUN rm -rvf ./steamcmd
-
-RUN mkdir -vp ./cstrike/addons/metamod/dlls ./cstrike/addons/dproto/dlls
-
-RUN curl -L "http://prdownloads.sourceforge.net/metamod/metamod-${METAMOD_VER}-linux.tar.gz?download" | tar zxC ./cstrike/addons/metamod/dlls\
- && curl -L "http://www.amxmodx.org/release/amxmodx-${AMXMOD_VER}-base-linux.tar.gz" | tar zxC ./cstrike/\
- && curl -L "http://www.amxmodx.org/release/amxmodx-${AMXMOD_VER}-cstrike-linux.tar.gz" | tar zxC ./cstrike/\
- && echo 'linux addons/amxmodx/dlls/amxmodx_mm_i386.so' >> ./cstrike/plugins.ini
-
-RUN curl -Lo /tmp/dproto.rar http://download.freakz.ro/dproto_${DPROTO_VER}.rar\
- && unrar e /tmp/dproto.rar bin/Linux/dproto_i386.so ./cstrike/addons/dproto/dlls/\
- && echo 'linux addons/dproto/dlls/dproto_i386.so' >> ./cstrike/plugins.ini
-
 # ---------------------------------
 
 FROM base AS result
