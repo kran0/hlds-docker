@@ -49,4 +49,4 @@ FROM base AS result
 COPY --from=builder /opt/ /opt/
 WORKDIR /opt/hlds/
 ENTRYPOINT [ "/opt/hlds/hlds_run.sh" ]
-CMD [ " +log off", "+sv_lan 1" ]
+CMD [ " +log off", "+sv_lan 0" ]
