@@ -9,10 +9,10 @@ services:
       START_MAP:   "de_dust2"
       SERVER_NAME: "Counter-Strike 1.6 Server"
       START_MONEY: "800"
-      BUY_TIME:    "0.25"
-      FRIENDLY_FIRE:   "1"
+      BUY_TIME:    "1.25"
+      FRIENDLY_FIRE:   "0"
       RESTART_ON_FAIL: "1"
-      #SERVER_PASSWORD: "secret"
+      SERVER_PASSWORD: "nomaam1"
       RCON_PASSWORD:   "supersecret"
     ports:
       - 26900:26900/udp
