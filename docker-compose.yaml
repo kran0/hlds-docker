@@ -12,7 +12,7 @@ services:
       BUY_TIME:    "1.25"
       FRIENDLY_FIRE:   "0"
       RESTART_ON_FAIL: "1"
-      SERVER_PASSWORD: "nomaam1"
+      SERVER_PASSWORD: "nomaam"
       RCON_PASSWORD:   "supersecret"
     ports:
       - 26900:26900/udp
