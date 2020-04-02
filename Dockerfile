@@ -1,8 +1,8 @@
 FROM ubuntu:19.04 AS base
 
 RUN apt update\
-# && apt install -y lib32gcc1 libstdc++6 ca-certificates
- && apt install -y lib32gcc1 ca-certificates
+    # && apt install -y lib32gcc1 libstdc++6 ca-certificates
+    && apt install -y lib32gcc1 ca-certificates
 
 FROM base AS builder
 
@@ -16,21 +16,30 @@ ADD hlds-files /opt/hlds/
 WORKDIR /opt/hlds/
 
 RUN apt update\
- && apt install -y curl bash unrar
+    && apt install -y curl bash unrar
 
 RUN curl -L "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxC ./steamcmd\
- && chmod +x "./steamcmd/steamcmd.sh"
+    && chmod +x "./steamcmd/steamcmd.sh"
 
 RUN UPDATE_CMD="./steamcmd/steamcmd_auto.sh +login ${STEAM_USER} ${STEAM_PASS} +force_install_dir /opt/hlds"\
-# && ${UPDATE_CMD}\
- && ${UPDATE_CMD} +app_update 90 validate\
- && ${UPDATE_CMD} +app_update 70 validate\
- && ${UPDATE_CMD} +app_update 10 validate\
- && ${UPDATE_CMD} +app_update 90 validate
+    # && ${UPDATE_CMD}\
+    && ${UPDATE_CMD} +app_update 90 validate\
+    && ${UPDATE_CMD} +app_update 70 validate\
+    && ${UPDATE_CMD} +app_update 10 validate\
+    && ${UPDATE_CMD} +app_update 90 validate
 
 # remove steamcmd
 RUN rm -rvf ./steamcmd
 # ---------------------------------
+
+RUN mkdir -vp ./cstrike/addons/metamod/dlls ./cstrike/addons/dproto/dlls
+
+RUN curl -L "http://prdownloads.sourceforge.net/metamod/metamod-${METAMOD_VER}-linux.tar.gz?download" | tar zxC ./cstrike/addons/metamod/dlls\
+    && curl -L "http://www.amxmodx.org/release/amxmodx-${AMXMOD_VER}-base-linux.tar.gz" | tar zxC ./cstrike/\
+    && curl -L "http://www.amxmodx.org/release/amxmodx-${AMXMOD_VER}-cstrike-linux.tar.gz" | tar zxC ./cstrike/\
+    && echo 'linux addons/amxmodx/dlls/amxmodx_mm_i386.so' >> ./cstrike/plugins.ini
+
+
 
 FROM base AS result
 
