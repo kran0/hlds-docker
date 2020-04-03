@@ -4,16 +4,16 @@ services:
   hlds:
     build: .
     environment:
-      GAME:        "cstrike"
-      MAXPLAYERS:  "32"
-      START_MAP:   "de_dust2"
+      GAME: "cstrike"
+      MAXPLAYERS: "32"
+      START_MAP: "de_dust2"
       SERVER_NAME: "Counter-Strike 1.6 Server"
       START_MONEY: "800"
-      BUY_TIME:    "1.25"
-      FRIENDLY_FIRE:   "0"
+      BUY_TIME: "3"
+      FRIENDLY_FIRE: "0"
       RESTART_ON_FAIL: "1"
       SERVER_PASSWORD: "nomaam"
-      RCON_PASSWORD:   "supersecret"
+      RCON_PASSWORD: "supersecret"
     ports:
       - 26900:26900/udp
       - 27020:27020/udp
