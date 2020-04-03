@@ -38,7 +38,7 @@ RUN curl -L "http://prdownloads.sourceforge.net/metamod/metamod-${METAMOD_VER}-l
     && curl -L "http://www.amxmodx.org/release/amxmodx-${AMXMOD_VER}-base-linux.tar.gz" | tar zxC ./cstrike/\
     && curl -L "http://www.amxmodx.org/release/amxmodx-${AMXMOD_VER}-cstrike-linux.tar.gz" | tar zxC ./cstrike/\
     && echo 'linux addons/amxmodx/dlls/amxmodx_mm_i386.so' >> ./cstrike/plugins.ini
-
+ADD hlds-files /opt/hlds/
 
 
 FROM base AS result
