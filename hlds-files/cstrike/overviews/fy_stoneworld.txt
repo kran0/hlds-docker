@@ -1,0 +1,14 @@
+//overview description file for fy_stoneworld.bsp
+
+global
+{
+	ZOOM	2.29
+	ORIGIN	1497.50   1609.75   -422
+	ROTATED 0
+}
+
+layer
+{
+	IMAGE	"overviews/fy_stoneworld.tga"
+	HEIGHT	-897
+} 
