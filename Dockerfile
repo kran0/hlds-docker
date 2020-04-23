@@ -1,4 +1,4 @@
-FROM ubuntu:19.04 AS base
+FROM ubuntu:19.10 AS base
 
 RUN apt update\
     # && apt install -y lib32gcc1 libstdc++6 ca-certificates
