@@ -1,0 +1,15 @@
+
+
+global
+{
+	ZOOM	2.16
+	ORIGIN	1152	512	0
+	ROTATED	1
+}
+
+layer
+{
+	IMAGE "overviews/de_westwood.bmp"
+	HEIGHT	-369
+}
+
