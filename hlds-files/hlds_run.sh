@@ -55,4 +55,8 @@ fi
 
 set > "${CONFIG_FILE}"
 
+echo "amx_sql_host \"${MYSQL_HOST}\"\namx_sql_user \"${MYSQL_USER}\"\namx_sql_pass \"${MYSQL_PASSWD}\"\namx_sql_db \"${MYSQL_DB}\"\namx_sql_type \"mysql\"" > ./cstrike/addons/amxmodx/configs/sql.cfg
+
+cp -r /opt/hlds-overwrite/. /opt/hlds/
+
 exec "${EXECUTABLE}" "${OPTIONS}" "${EXTRA_OPTIONS}"

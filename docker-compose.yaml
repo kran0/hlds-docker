@@ -1,14 +1,29 @@
-version: "2"
+version: "3"
 
 services:
   db:
     image: mysql:5.6
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: cs
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWD}
+      MYSQL_DATABASE: ${MYSQL_DB}
     ports:
       - 3306:3306
+    volumes:
+      - ${MYSQL_DATA_VOLUME_PATH}:/var/lib/mysql
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysql",
+          "--user=${MYSQL_USER}",
+          "--password=${MYSQL_PASSWD}",
+          "--execute",
+          "SHOW DATABASES;",
+        ]
+      interval: 2s
+      timeout: 20s
+      retries: 10
 
   hlds:
     build: .
@@ -25,8 +40,24 @@ services:
       RESTART_ON_FAIL: "1"
       SERVER_PASSWORD: "nomaam"
       RCON_PASSWORD: "supersecret"
+      MYSQL_HOST: db
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWD: ${MYSQL_PASSWD}
+      MYSQL_DB: ${MYSQL_DB}
     ports:
       - 26900:26900/udp
       - 27020:27020/udp
       - 27015:27015/udp
       - 27015:27015/tcp
+    volumes:
+      - ${CS_DATA_VOLUME_PATH}:/opt/hlds/cstrike/addons/amxmodx/data
+      # - /Users/shakib/Development/Projects/docker-test/cs/lang:/opt/hlds/cstrike/addons/amxmodx/data/lang
+    command:
+      [
+        "./wait-for-it.sh",
+        "db:3306",
+        "--",
+        "/opt/hlds/hlds_run.sh",
+        "+log off",
+        "+sv_lan 0",
+      ]

@@ -2,7 +2,8 @@ FROM ubuntu:19.10 AS base
 
 RUN apt update\
     # && apt install -y lib32gcc1 libstdc++6 ca-certificates
-    && apt install -y lib32gcc1 ca-certificates
+    && apt install -y lib32gcc1 ca-certificates\
+    && apt install -y netcat
 
 FROM base AS builder
 
@@ -14,6 +15,7 @@ ARG DPROTO_VER="0_9_87--6b4vhmfg85p422tyu1km28jcz64j79d9"
 
 ADD hlds-files /opt/hlds/
 WORKDIR /opt/hlds/
+
 
 RUN apt update\
     && apt install -y curl bash unrar
@@ -39,11 +41,12 @@ RUN curl -L "http://prdownloads.sourceforge.net/metamod/metamod-${METAMOD_VER}-l
     && curl -L "http://www.amxmodx.org/release/amxmodx-${AMXMOD_VER}-cstrike-linux.tar.gz" | tar zxC ./cstrike/\
     && echo 'linux addons/amxmodx/dlls/amxmodx_mm_i386.so' >> ./cstrike/plugins.ini
 ADD hlds-files /opt/hlds/
-
+ADD overwrite /opt/hlds-overwrite/
 
 FROM base AS result
 
 COPY --from=builder /opt/ /opt/
 WORKDIR /opt/hlds/
-ENTRYPOINT [ "/opt/hlds/hlds_run.sh" ]
-CMD [ " +log off", "+sv_lan 0" ]
+# ENTRYPOINT [ "/opt/hlds/hlds_run.sh" ]
+# CMD [ " +log off", "+sv_lan 0" ]
+CMD ["/opt/hlds/hlds_run.sh", "+log off", "+sv_lan 0"]
